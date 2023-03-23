@@ -1,4 +1,5 @@
 ﻿using GradeBook.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -40,7 +41,7 @@ namespace GradeBook.GradeBooks
 
             }
 
-            if (percentage >= 0.8) 
+            if (percentage >= 0.8)
             {
                 return 'A';
             }
@@ -60,8 +61,23 @@ namespace GradeBook.GradeBooks
 
         }
 
+        public override void CalculateStatistics()
+        {
+            double studnetCounter = Students.Count;
+            if (studnetCounter < 5)
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+            else base.CalculateStatistics();
+        }
+
+        public override void CalculateStudentStatistics(string name)
+        {
+            double studnetCounter = Students.Count;
+            if (studnetCounter < 5)
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+            else base.CalculateStudentStatistics(name);
+
+        }
+
 
     }
-
-
 }
